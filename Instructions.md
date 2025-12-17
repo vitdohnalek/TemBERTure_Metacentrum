@@ -75,3 +75,25 @@ Predicted thermal class: Thermophilic
 Thermophilicity prediction score: 0.999098474215349
 Out[1]: ['Thermophilic', 0.999098474215349]
 ```
+
+## Batch Usage
+
+If you have a large dataset and you don't want to manually type in all your sequences you can use the python script provided in this repository. You can start an interactive job and follow all the instructions normally. Instead of starting the interactive python shell you copy the TemBERTure_batch.py to Metacentrum and run the following command:
+
+```bash
+python TemBERTure_batch.py
+```
+
+Please, note that you have to change the name of the fasta file in the script to the name of the fasta file of your interest. If the fasta file is not in the same directory as the script, you have to provide a path to the file. Results are written into a .tsv file.
+
+Alternatively, you can avoid the usage of interactive job altogether using the TemBERTure_batch.sh script. In this case, you simply log in to metacentrum and copy there both TemBERTure_batch.sh and TemBERTure_batch.py scripts from this repository. You still have to provide the name of the fasta file to the python script. Also, you have to provide the path to the working directory to the .sh script. Once it is done you can do:
+
+```bash
+qsub TemBERTure_batch.sh
+```
+
+The scirpt then do all the work for you. Once it is done, the job is terminated. You can check whether it is still running with:
+
+```bash
+watch qstat -u  YOUR_USERNAME
+```
