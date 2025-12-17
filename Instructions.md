@@ -74,6 +74,23 @@ model.predict(seq)
 Predicted thermal class: Thermophilic
 Thermophilicity prediction score: 0.999098474215349
 Out[1]: ['Thermophilic', 0.999098474215349]
+
+# For melting temperature prediction use different model
+
+# Initialize all TemBERTureTM replicas with specified inference parameters
+model_replica1 = TemBERTure(
+    adapter_path='./temBERTure_TM/replica1/',  # Path to the adapter for replica 1
+    device='cuda',                                        # Device to run the model on
+    batch_size=16,                                        # Batch size for inference
+    task='regression'                                     # Task type (e.g., regression for TemBERTureTM)
+)
+
+model_replica1.predict(seq)
+
+# Expected outcome for the example sequence
+100%|██████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  2.50it/s]
+Predicted melting temperature: [77.86847686767578]
+[77.86847686767578]
 ```
 
 ## Batch Usage
